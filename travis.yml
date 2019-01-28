@@ -1,3 +1,5 @@
 setup:
   python3 test.py
   bash test.sh
+
+build_artifact: artifact.zip
