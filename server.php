@@ -1,5 +1,7 @@
 <?php
 
+$dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+
 $sth = $dbh->prepare("SELECT name, colour FROM fruit");
 $sth->execute();
 
