@@ -21,7 +21,7 @@ async def fetch_classutil_page(session: aiohttp.ClientSession, page_url: str):
 
 
 async def main():
-    pg_conn = psycopg2.connect("postgres://postgres:OWEEK{no_secrets_in_source_code_pls}@localhost/db1")
+    pg_conn = psycopg2.connect(os.environ["DATABASE_URL"])
     pg_conn.set_session(autocommit=True)
 
     async with aiohttp.ClientSession() as session:
