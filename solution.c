@@ -1,4 +1,3 @@
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -23,3 +22,38 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         assert(l1_val <= 9 && l2_val <= 9);
         
         int compute = l1_val + l2_val + carry;
+        carry = 0;
+        assert(compute >= 0 && compute <= 9 + 9 + 1);
+        
+        if (compute >= 10) {
+            carry = 1;
+            compute = compute - 10; // Remove carried digit
+        }
+        // carry = (compute - 9) & 1u; // Peg to <=1
+        // compute = compute - (10 * carry); // Remove carried digit
+        assert(carry == 0 || carry == 1);
+        assert(compute >= 0 && compute <= 9);
+        
+        struct ListNode *n = malloc(sizeof(struct ListNode));
+        assert(n != NULL);
+        
+        n->val = compute;
+        n->next = NULL;
+        
+        if (r != NULL) {
+            rn->next = n;
+            rn = n;
+        } else {
+            r = n;
+            rn = n;
+        }
+        assert(r != NULL);
+        assert(rn != NULL);
+        assert(rn->next == NULL);
+        
+        if (l1 != NULL) l1 = l1->next;
+        if (l2 != NULL) l2 = l2->next;
+    }
+    
+    return r;
+}
