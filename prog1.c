@@ -5,4 +5,6 @@ int main(int argc, char **argv) {
   
   int x = scanf("%d");
   printf("You entered %d\n", x);
+  
+  return 0;
 }
